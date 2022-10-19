@@ -1,4 +1,4 @@
--- credit goes here: https://github.com/dgiacomo/Neovim-from-scratch/blob/master/lua/user/vimwiki.lua 
+-- === credit goes here: https://github.com/dgiacomo/Neovim-from-scratch/blob/master/lua/user/vimwiki.lua 
 vim.g.vimwiki_list = {
   {
     path = '~/scripts/vimwiki/notewiki',
