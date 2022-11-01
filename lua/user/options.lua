@@ -18,12 +18,12 @@ lvim.builtin.telescope.defaults.initial_mode = "insert"
 -- lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
 -- lvim.builtin.telescope.defaults.layout_config.width = 0.90
 -- lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 90
--- lvim.builtin.telescope.pickers.live_grep = {
---   layout_strategy = "horizontal",
---   layout_config = {
---     width = 0.95,
---   },
--- }
+lvim.builtin.telescope.pickers.live_grep = {
+  layout_strategy = "horizontal",
+  layout_config = {
+    width = 0.95,
+  },
+}
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.cmdline.enable = false
 lvim.builtin.cmp.window.documentation = false
