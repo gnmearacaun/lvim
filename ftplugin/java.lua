@@ -36,15 +36,16 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
 local bundles = {}
-local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
-vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar"), "\n"))
-vim.list_extend(
-	bundles,
-	vim.split(
-		vim.fn.glob(mason_path .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
-		"\n"
-	)
-)
+-- todo: commented out by bod
+-- local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+-- vim.list_extend(bundles, vim.split(vim.fn.glob(mason_path .. "packages/java-test/extension/server/*.jar"), "\n"))
+-- vim.list_extend(
+-- 	bundles,
+-- 	vim.split(
+-- 		vim.fn.glob(mason_path .. "packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"),
+-- 		"\n"
+-- 	)
+-- )
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {

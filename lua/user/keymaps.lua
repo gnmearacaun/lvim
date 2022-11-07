@@ -1,6 +1,6 @@
 M = {}
 lvim.leader = "space"
-lvim.localleader = "t"
+lvim.localleader = ""
 local opts = { noremap = true, silent = true }
 -- For the description on keymaps, I have a function getOptions(desc) which returns noremap=true, silent=true and desc=desc. Then call: keymap(mode, keymap, command, getOptions("some randome desc")
 local keymap = vim.keymap.set
@@ -34,6 +34,12 @@ vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 -- start BOD
 -- Don't reach for tab
 keymap("n", "<C-i>", "<C-i>", opts)
+-- Insert --
+-- Move the cursor
+-- keymap("i", "<A-h>", "<Left>", opts)
+-- keymap("i", "<A-l>", "<Right>", opts)
+-- Normal --
+
 -- Easy colon, shift not needed
 keymap("n", ";", ":", opts)
 keymap("v", ";", ":", opts)
@@ -41,16 +47,18 @@ keymap("n", ":", ";", opts)
 keymap("v", ":", ";", opts)
 -- Get the haul out of dodge
 keymap("i", "kj", "<ESC>", opts)
-lvim.keys.insert_mode["jk"] = "<Esc>"
+-- lvim.keys.insert_mode["jk"] = "<ESC>"
 -- Page down/up
 keymap("n", "[d", "<PageUp>", opts)
 keymap("n", "]d", "<PageDown>", opts)
 -- Navigating buffers
--- lvim.localleader = "t"
 keymap("n", "to", ":<C-u>tabnew<CR>", opts)
-keymap("n", "tj", ":BufferLineCyclePrev<CR>", opts)
-keymap("n", "tl", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
+lvim.keys.normal_mode["tj"] = ":BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["tl"] = ":BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["tk"] = "<cmd>Bdelete!<CR>"
+-- keymap("n", "tj", ":BufferLineCyclePrev<CR>", opts)
+-- keymap("n", "tl", ":BufferLineCycleNext<CR>", opts)
+-- keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
 -- " Toggle between last 2 buffers
 keymap("n", "tt", "<C-^>", opts)
 keymap("n", "tq", ":tabonly<cr>", opts)
@@ -138,6 +146,37 @@ nnoremap <leader>wv <cmd>lua require('telescope').extensions.vw.vw()<cr>
 nnoremap <leader>wg <cmd>lua require('telescope').extensions.vw.live_grep()<cr>
 ]])
 
+
+keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
+keymap("n", "<C-i>", "<C-i>", opts)
+
+-- Better window navigation
+keymap("n", "<M-h>", "<C-w>h", opts)
+keymap("n", "<M-j>", "<C-w>j", opts)
+keymap("n", "<M-k>", "<C-w>k", opts)
+keymap("n", "<M-l>", "<C-w>l", opts)
+keymap("n", "<M-tab>", "<C-6>", opts)
+
+function _G.set_terminal_keymaps()
+  local opts = { noremap = true }
+  -- vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  -- vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
+  vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
+end
+
+
+-- Normal --
+vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
+
+-- Tabs --
+-- keymap("n", "\\", ":tabnew %<cr>", opts)
+-- keymap("n", "\\", ":tabnew %<cr>", opts)
+-- keymap("n", "<s-\\>", ":tabclose<cr>", opts)
+-- keymap("n", "<s-\\>", ":tabonly<cr>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -164,8 +203,7 @@ keymap("v", "p", '"_dP', opts)
 keymap(
   "n",
   "<F6>",
-  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]]
-  ,
+  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
   opts
 )
 keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
@@ -174,21 +212,19 @@ keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
--- keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 vim.api.nvim_set_keymap(
   "n",
   "<tab>",
-  "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>"
-  ,
+  "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
   opts
 )
 vim.api.nvim_set_keymap(
   "n",
   "<s-tab>",
-  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = true, initial_mode='normal'})<cr>"
-  ,
+  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = true, initial_mode='normal'})<cr>",
   opts
 )
 

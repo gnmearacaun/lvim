@@ -63,6 +63,7 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     run = "cd js && npm ci",
   },
+<<<<<<< HEAD
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",
@@ -84,6 +85,71 @@ lvim.plugins = {
   --     "MunifTanjim/nui.nvim",
   --   },
   -- },
+||||||| parent of 950684f (repairing sumneko loading + missing keymaps)
+  -- { "tzachar/cmp-tabnine", run = "./install.sh" },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   event = { "VimEnter" },
+  --   config = function()
+  --     vim.defer_fn(function()
+  --       require("copilot").setup {
+  --         plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR" .. "/site/pack/packer",
+  --       }
+  --     end, 100)
+  --   end,
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   after = { "copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup()
+  --   end,
+  -- },
+  -- Packer
+  {
+    "folke/noice.nvim",
+    event = "VimEnter",
+    config = function()
+      require("noice").setup()
+    end,
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
+=======
+  -- { "tzachar/cmp-tabnine", run = "./install.sh" },
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	-- event = { "VimEnter" },
+	-- 	config = function()
+	-- 		vim.defer_fn(function()
+	-- 			require("copilot").setup({
+	-- 				plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
+	-- 			})
+	-- 		end, 100)
+	-- 	end,
+	-- },
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end,
+	-- },
+  -- Packer
+
+	"MunifTanjim/nui.nvim",
+	{
+		"folke/noice.nvim",
+		event = "VimEnter",
+		config = function()
+			require("noice").setup()
+		end,
+	},
+
+>>>>>>> 950684f (repairing sumneko loading + missing keymaps)
   -- https://github.com/jose-elias-alvarez/typescript.nvim
   -- "rmagatti/auto-session",
   -- "rmagatti/session-lens"
