@@ -49,7 +49,6 @@ lvim.builtin.cmp.formatting.source_names = {
 lvim.transparent_window = true
 lvim.builtin.nvimtree.setup.sync_root_with_cwd = false
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
--- lvim.colorscheme = "tokyonight"
 
 vim.opt.showtabline = 0
 local options = {

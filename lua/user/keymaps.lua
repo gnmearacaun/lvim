@@ -93,6 +93,8 @@ keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
 -- keymap("n", "<F5>", "<cmd>=strftime("\%c")<CR>P", opts)
 -- keymap("i", "<F5>", "<cmd><C-R>=strftime("\%c")<CR>", opts)
 -- Other keymappings
+lvim.keys.normal_mode["s"] = false
+lvim.keys.normal_mode["ss"] = false
 vim.cmd([[
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>

@@ -27,16 +27,15 @@ lvim.plugins = {
   "kevinhwang91/nvim-bqf",
   "is0n/jaq-nvim",
   "hrsh7th/cmp-emoji",
-  "ggandor/leap.nvim",
   "nacro90/numb.nvim",
   "TimUntersberger/neogit",
   "sindrets/diffview.nvim",
-  -- "simrat39/rust-tools.nvim",
-  -- "olexsmir/gopher.nvim",
+  "simrat39/rust-tools.nvim",
+  "olexsmir/gopher.nvim",
   "leoluz/nvim-dap-go",
   "mfussenegger/nvim-dap-python",
   "jose-elias-alvarez/typescript.nvim",
-  -- "mxsdev/nvim-dap-vscode-js",
+  "mxsdev/nvim-dap-vscode-js",
   {
     "saecki/crates.nvim",
     tag = "v0.3.0",
@@ -82,5 +81,17 @@ lvim.plugins = {
   "vim-scripts/autoscroll.vim",
   "vimwiki/vimwiki",
   "ElPiloto/telescope-vimwiki.nvim",
+  {
+    "iamcco/markdown-preview.nvim",
+    run = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
   -- end BOD
 }
