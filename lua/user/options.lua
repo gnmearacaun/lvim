@@ -26,7 +26,6 @@ lvim.builtin.telescope.pickers.live_grep = {
 }
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.cmdline.enable = false
-<<<<<<< HEAD
 lvim.builtin.cmp.window.documentation = false
 lvim.builtin.cmp.window.completion = {
   border = "rounded",

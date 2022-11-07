@@ -71,6 +71,19 @@ lvim.plugins = {
   --     require("noice").setup()
   --   end,
   -- },
+  -- Packer
+    event = "VimEnter",
+  -- {
+  --   "folke/noice.nvim",
+  --   event = "VimEnter",
+  --   config = function()
+  --     require("noice").setup()
+  --   end,
+  --   requires = {
+  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  -- },
   -- https://github.com/jose-elias-alvarez/typescript.nvim
   -- "rmagatti/auto-session",
   -- "rmagatti/session-lens"

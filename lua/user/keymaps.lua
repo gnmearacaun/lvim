@@ -6,8 +6,8 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 -- Insert --
 -- Move the cursor
-keymap("i", "<A-h>", "<Left>", opts)
-keymap("i", "<A-l>", "<Right>", opts)
+-- keymap("i", "<A-h>", "<Left>", opts)
+-- keymap("i", "<A-l>", "<Right>", opts)
 -- Normal --
 -- Better window navigation
 keymap("n", "<m-h>", "<C-w>h", opts)
@@ -39,23 +39,26 @@ keymap("n", ";", ":", opts)
 keymap("v", ";", ":", opts)
 keymap("n", ":", ";", opts)
 keymap("v", ":", ";", opts)
--- Get the hell out of dodge
+-- Get the haul out of dodge
 keymap("i", "kj", "<ESC>", opts)
+lvim.keys.insert_mode["jk"] = "<Esc>"
 -- Page down/up
 keymap("n", "[d", "<PageUp>", opts)
 keymap("n", "]d", "<PageDown>", opts)
 -- Navigating buffers
+-- lvim.localleader = "t"
 keymap("n", "to", ":<C-u>tabnew<CR>", opts)
-keymap("n", "tn", ":<C-u>tabnew<CR>", opts)
 keymap("n", "tj", ":BufferLineCyclePrev<CR>", opts)
 keymap("n", "tl", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
 -- " Toggle between last 2 buffers
 keymap("n", "tt", "<C-^>", opts)
 keymap("n", "tq", ":tabonly<cr>", opts)
-keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
--- keymap("n", "tq", ":call CloseBuffer()<CR>", opts)
+
+--keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
+-- unknown functions
 -- keymap("n", "tx", ":<C-u>call BufferEmpty()<CR>", opts)
+-- keymap("n", "td", ":call CloseBuffer()<CR>", opts)
 keymap("n", "q", "<Nop>", opts)
 keymap("n", "q", "<C-w>q", opts)
 -- lvim.keys.normal_mode["<C-q>"] = false
