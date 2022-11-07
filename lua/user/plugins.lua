@@ -64,29 +64,6 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     run = "cd js && npm ci",
   },
-  { "tzachar/cmp-tabnine", run = "./install.sh" },
-  {
-    "zbirenbaum/copilot.lua",
-    -- event = { "VimEnter" },
-    config = function()
-      vim.defer_fn(function()
-        require("copilot").setup {
-          plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR" .. "/site/pack/packer",
-        }
-      end, 100)
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup {
-        formatters = {
-          insert_text = require("copilot_cmp.format").remove_existing,
-        },
-      }
-    end,
-  },
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",
@@ -95,8 +72,15 @@ lvim.plugins = {
   --     require("noice").setup()
   --   end,
   -- },
-
   -- https://github.com/jose-elias-alvarez/typescript.nvim
   -- "rmagatti/auto-session",
   -- "rmagatti/session-lens"
+  --
+  -- BOD
+  "lunarvim/colorschemes",
+  "gnmearacaun/onedarkcomment.nvim",
+  "vim-scripts/autoscroll.vim",
+  "vimwiki/vimwiki",
+  "ElPiloto/telescope-vimwiki.nvim",
+  -- end BOD
 }

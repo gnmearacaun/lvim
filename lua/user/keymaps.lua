@@ -1,5 +1,6 @@
 M = {}
 lvim.leader = "space"
+lvim.localleader = "t"
 
 local opts = { noremap = true, silent = true }
 -- For the description on keymaps, I have a function getOptions(desc) which returns noremap=true, silent=true and desc=desc. Then call: keymap(mode, keymap, command, getOptions("some randome desc")
@@ -32,6 +33,114 @@ vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 -- keymap("n", "<s-\\>", ":tabclose<cr>", opts)
 -- keymap("n", "<s-\\>", ":tabonly<cr>", opts)
 
+-- start BOD
+-- Navigating buffers
+-- s is used for substitution, maplocalleader to t instead
+keymap("n", "to", ":<C-u>tabnew<CR>", opts)
+keymap("n", "tn", ":<C-u>tabnew<CR>", opts)
+keymap("n", "tj", ":bprevious<CR>", opts)
+keymap("n", "tk", ":bnext<CR>", opts)
+-- " Toggle between last 2 buffers
+keymap("n", "tt", "<C-^>", opts)
+keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
+-- lvim.keys.normal_mode["<C-q>"] = false
+-- keymap("n", "<C-q>", "<cmd>quit<CR>", opts)
+-- Record Macros with 'Q'. Use 'q' for quitting rapidly.
+keymap("n", "q", "<Nop>", opts)
+keymap("n", "q", "<C-w>q", opts)
+keymap("n", "Q", "<Nop>", opts)
+-- keymap("n", "Q", "q`]", opts)
+keymap("n", "Q", "q", opts)
+-- keymap("n", "<C-q>", ":call SmartQuit()<CR>", opts)
+--keymap('n', 'q', 'Q`]', opts)
+-- keymap("n", "tq", ":call CloseBuffer()<CR>", opts)
+-- keymap("n", "tx", ":<C-u>call BufferEmpty()<CR>", opts)
+-- keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
+
+-- Fast saving
+-- keymap("n", "<silent><buffer><C-s>", ":write<CR>", opts)
+keymap("n", "<C-s>", ":write<CR>", opts)
+keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
+
+keymap("i", "kj", "<ESC>", opts)
+
+-- Easy colon, shift not needed
+keymap("n", ";", ":", opts)
+keymap("v", ";", ":", opts)
+keymap("n", ":", ";", opts)
+keymap("v", ":", ";", opts)
+
+-- Y yank until the end of line
+keymap("n", "Y", "y$", opts)
+keymap("n", "Y", "y$", opts)
+-- Move to end of text after yank or paste
+-- keymap('v', 'p', 'p`]', opts)
+
+-- autoscroll plugin
+keymap("n", "ts", "<cmd>ScrollDown<CR>", opts)
+keymap("n", "tu", "<cmd>ScrollUp<CR>", opts)
+keymap("n", "te", "<cmd>StopScrolling<CR>", opts)
+-- Markdown Preview keybindings
+keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
+keymap("n", "tm", "<Plug>MarkdownPreviewToggle", opts)
+
+
+-- Navigating word wrap
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+
+-- Search selected text
+-- Consistent `*` behaviour
+-- keymap("n", "*", [[*N]], opts)
+-- keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
+
+-- here be errors
+-- keymap("n", "<F5>", "=strftime("\%c")<CR>P", opts)
+-- keymap("i", "<F5>", "<C-R>=strftime("\%c")<CR>", opts)
+
+-- other keymappings
+vim.cmd([[
+nnoremap <F5> "=strftime("%c")<CR>P
+inoremap <F5> <C-R>=strftime("%c")<CR>
+" Save with sudo
+cmap W!! w !sudo tee % >/dev/null
+" Start an external command with a single she-bang
+nnoremap ! :!
+" Move to beginning or end of line
+nnoremap B ^
+nnoremap E $
+" so x doesn't clobber paste buffer"
+nnoremap x "_x
+" Change next match in a repeatable manner
+" nnoremap cn *``cgn
+" nnoremap cN *``cgN
+" vnoremap <expr> cn "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgn"
+" vnoremap <expr> cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
+"nnoremap <leader>a =ip    " Indent a paragraph
+" Center highlighted search
+"nnoremap n nzz
+"nnoremap N Nzz
+" Move to end of yanked text after yank
+vnoremap y y`]
+" Move to end of text after paste
+nnoremap p p`]
+vnoremap p p`]
+" Replace current work with last yanked selection
+nnoremap <Leader>. viw"0p
+nnoremap cp yap<S-}>p
+" Quick substitute within a selected area
+xnoremap s :s//g<Left><Left>
+" Select last paste. Except interferes with vimdiff!!
+"nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
+" paste line(s) at the bottom of the file
+" nnoremap tb :mark '<cr>:$put<cr>`'
+let g:AutoScrollSpeed = 1300
+nnoremap <leader>wv <cmd>lua require('telescope').extensions.vw.vw()<cr>
+nnoremap <leader>wg <cmd>lua require('telescope').extensions.vw.live_grep()<cr>
+]])
+-- end BOD
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -53,7 +162,7 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "p", '"_dP', opts)
 -- keymap("v", "P", '"_dP', opts)
 
-keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
+-- keymap("n", "q", "<cmd>Bdelete!<CR>", opts)
 
 keymap(
   "n",

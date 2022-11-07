@@ -58,8 +58,8 @@ lvim.builtin.telescope.defaults.mappings = {
 		["<C-n>"] = actions.cycle_history_next,
 		["<C-p>"] = actions.cycle_history_prev,
 
-		["<C-j>"] = actions.move_selection_next,
-		["<C-k>"] = actions.move_selection_previous,
+		["<C-d>"] = actions.move_selection_next,
+		["<C-'>"] = actions.move_selection_previous,
 
 		["<C-b>"] = actions.results_scrolling_up,
 		["<C-f>"] = actions.results_scrolling_down,
@@ -133,9 +133,13 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 
 require("telescope-tabs").setup({
-	show_preview = false,
+	show_preview = true,
 	close_tab_shortcut = "C-d",
 	initial_mode = "normal",
 	theme = "dropdown",
 	-- Your custom config :^)
 })
+
+-- require("telescope-vimwiki").setup({
+--   load_extension = "vw",
+-- })
