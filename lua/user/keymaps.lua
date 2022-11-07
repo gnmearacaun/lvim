@@ -1,15 +1,13 @@
 M = {}
 lvim.leader = "space"
 lvim.localleader = "t"
-
 local opts = { noremap = true, silent = true }
 -- For the description on keymaps, I have a function getOptions(desc) which returns noremap=true, silent=true and desc=desc. Then call: keymap(mode, keymap, command, getOptions("some randome desc")
-
 local keymap = vim.keymap.set
-
-keymap("n", "<C-Space>", "<cmd>WhichKey \\<space><cr>", opts)
-keymap("n", "<C-i>", "<C-i>", opts)
-
+-- Insert --
+-- Move the cursor
+keymap("i", "<A-h>", "<Left>", opts)
+keymap("i", "<A-l>", "<Right>", opts)
 -- Normal --
 -- Better window navigation
 keymap("n", "<m-h>", "<C-w>h", opts)
@@ -34,72 +32,67 @@ vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 -- keymap("n", "<s-\\>", ":tabonly<cr>", opts)
 
 -- start BOD
--- Navigating buffers
--- s is used for substitution, maplocalleader to t instead
-keymap("n", "to", ":<C-u>tabnew<CR>", opts)
-keymap("n", "tn", ":<C-u>tabnew<CR>", opts)
-keymap("n", "tj", ":bprevious<CR>", opts)
-keymap("n", "tk", ":bnext<CR>", opts)
--- " Toggle between last 2 buffers
-keymap("n", "tt", "<C-^>", opts)
-keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
--- lvim.keys.normal_mode["<C-q>"] = false
--- keymap("n", "<C-q>", "<cmd>quit<CR>", opts)
--- Record Macros with 'Q'. Use 'q' for quitting rapidly.
-keymap("n", "q", "<Nop>", opts)
-keymap("n", "q", "<C-w>q", opts)
-keymap("n", "Q", "<Nop>", opts)
--- keymap("n", "Q", "q`]", opts)
-keymap("n", "Q", "q", opts)
--- keymap("n", "<C-q>", ":call SmartQuit()<CR>", opts)
---keymap('n', 'q', 'Q`]', opts)
--- keymap("n", "tq", ":call CloseBuffer()<CR>", opts)
--- keymap("n", "tx", ":<C-u>call BufferEmpty()<CR>", opts)
--- keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
-
--- Fast saving
--- keymap("n", "<silent><buffer><C-s>", ":write<CR>", opts)
-keymap("n", "<C-s>", ":write<CR>", opts)
-keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
-
-keymap("i", "kj", "<ESC>", opts)
-
+-- Don't reach for tab
+keymap("n", "<C-i>", "<C-i>", opts)
 -- Easy colon, shift not needed
 keymap("n", ";", ":", opts)
 keymap("v", ";", ":", opts)
 keymap("n", ":", ";", opts)
 keymap("v", ":", ";", opts)
+-- Get the hell out of dodge
+keymap("i", "kj", "<ESC>", opts)
+-- Page down/up
+keymap("n", "[d", "<PageUp>", opts)
+keymap("n", "]d", "<PageDown>", opts)
+-- Navigating buffers
+keymap("n", "to", ":<C-u>tabnew<CR>", opts)
+keymap("n", "tn", ":<C-u>tabnew<CR>", opts)
+keymap("n", "tj", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "tl", ":BufferLineCycleNext<CR>", opts)
+-- " Toggle between last 2 buffers
+keymap("n", "tt", "<C-^>", opts)
+keymap("n", "tq", ":tabonly<cr>", opts)
+keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
+-- keymap("n", "tq", ":call CloseBuffer()<CR>", opts)
+-- keymap("n", "tx", ":<C-u>call BufferEmpty()<CR>", opts)
+keymap("n", "q", "<Nop>", opts)
+keymap("n", "q", "<C-w>q", opts)
+-- lvim.keys.normal_mode["<C-q>"] = false
+-- keymap("n", "<C-q>", "<cmd>quit<CR>", opts)
+-- keymap("n", "<C-q>", ":call SmartQuit()<CR>", opts)
 
+-- Record Macros with 'Q'. Use 'q' for quitting rapidly.
+-- keymap("n", "Q", "q`]", opts)
+keymap("n", "Q", "<Nop>", opts)
+keymap("n", "Q", "q", opts)
+-- Fast saving
+keymap("n", "<C-s>", ":write<CR>", opts)
+keymap("i", "<C-s>", "<C-o>:w<CR>", opts)
+-- Save file and quit insert-mode
+keymap("i", "<C-s>", "<Esc><cmd>w<CR>", opts)
 -- Y yank until the end of line
 keymap("n", "Y", "y$", opts)
 keymap("n", "Y", "y$", opts)
 -- Move to end of text after yank or paste
--- keymap('v', 'p', 'p`]', opts)
-
--- autoscroll plugin
+keymap('v', 'p', 'p`]', opts)
+-- Navigating word wrap
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+-- Autoscroll plugin
 keymap("n", "ts", "<cmd>ScrollDown<CR>", opts)
 keymap("n", "tu", "<cmd>ScrollUp<CR>", opts)
 keymap("n", "te", "<cmd>StopScrolling<CR>", opts)
 -- Markdown Preview keybindings
 keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
 keymap("n", "tm", "<Plug>MarkdownPreviewToggle", opts)
-
-
--- Navigating word wrap
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
-
--- Search selected text
 -- Consistent `*` behaviour
--- keymap("n", "*", [[*N]], opts)
--- keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
-
--- here be errors
--- keymap("n", "<F5>", "=strftime("\%c")<CR>P", opts)
--- keymap("i", "<F5>", "<C-R>=strftime("\%c")<CR>", opts)
-
--- other keymappings
+keymap("n", "*", [[*N]], opts)
+keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
+-- Here be errors
+-- keymap("n", "<F5>", "<cmd>=strftime("\%c")<CR>P", opts)
+-- keymap("i", "<F5>", "<cmd><C-R>=strftime("\%c")<CR>", opts)
+-- Other keymappings
 vim.cmd([[
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
@@ -110,17 +103,17 @@ nnoremap ! :!
 " Move to beginning or end of line
 nnoremap B ^
 nnoremap E $
-" so x doesn't clobber paste buffer"
+" So x doesn't clobber paste buffer"
 nnoremap x "_x
 " Change next match in a repeatable manner
-" nnoremap cn *``cgn
-" nnoremap cN *``cgN
-" vnoremap <expr> cn "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgn"
-" vnoremap <expr> cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
-"nnoremap <leader>a =ip    " Indent a paragraph
+nnoremap cn *``cgn
+nnoremap cN *``cgN
+vnoremap <expr> cn "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgn"
+vnoremap <expr> cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
+nnoremap <leader>a =ip    " Indent a paragraph
 " Center highlighted search
-"nnoremap n nzz
-"nnoremap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 " Move to end of yanked text after yank
 vnoremap y y`]
 " Move to end of text after paste
@@ -132,14 +125,13 @@ nnoremap cp yap<S-}>p
 " Quick substitute within a selected area
 xnoremap s :s//g<Left><Left>
 " Select last paste. Except interferes with vimdiff!!
-"nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
-" paste line(s) at the bottom of the file
+nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
+" Paste line(s) at the bottom of the file
 " nnoremap tb :mark '<cr>:$put<cr>`'
 let g:AutoScrollSpeed = 1300
 nnoremap <leader>wv <cmd>lua require('telescope').extensions.vw.vw()<cr>
 nnoremap <leader>wg <cmd>lua require('telescope').extensions.vw.live_grep()<cr>
 ]])
--- end BOD
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -167,7 +159,8 @@ keymap("v", "p", '"_dP', opts)
 keymap(
   "n",
   "<F6>",
-  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]],
+  [[:echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>]]
+  ,
   opts
 )
 keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
@@ -182,13 +175,15 @@ keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vi
 vim.api.nvim_set_keymap(
   "n",
   "<tab>",
-  "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
+  "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>"
+  ,
   opts
 )
 vim.api.nvim_set_keymap(
   "n",
   "<s-tab>",
-  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal'})<cr>",
+  "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = true, initial_mode='normal'})<cr>"
+  ,
   opts
 )
 
@@ -201,8 +196,6 @@ vim.cmd [[
     endif
   endfunction
 ]]
-
-keymap("n", "<m-q>", ":call QuickFixToggle()<cr>", opts)
 
 M.show_documentation = function()
   local filetype = vim.bo.filetype
