@@ -123,7 +123,7 @@ vnoremap p p`]
 nnoremap <Leader>. viw"0p
 nnoremap cp yap<S-}>p
 " Quick substitute within a selected area
-xnoremap s :s//g<Left><Left>
+" xnoremap s :s//g<Left><Left>
 " Select last paste. Except interferes with vimdiff!!
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 " Paste line(s) at the bottom of the file
@@ -169,7 +169,7 @@ keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
 keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
-keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+-- keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 vim.api.nvim_set_keymap(
@@ -209,6 +209,7 @@ M.show_documentation = function()
     vim.lsp.buf.hover()
   end
 end
+
 vim.api.nvim_set_keymap("n", "K", ":lua require('user.keymaps').show_documentation()<CR>", opts)
 
 return M

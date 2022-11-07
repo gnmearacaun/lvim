@@ -1,6 +1,7 @@
-lvim.colorscheme = "codemonkey"
+lvim.colorscheme = "ferrum"
 -- lvim.colorscheme = "darkplus"
 lvim.log.level = "warn"
+-- lvim.log.level = "debug"
 lvim.builtin.alpha.active = true
 lvim.builtin.illuminate.active = false
 lvim.builtin.bufferline.active = true
@@ -10,9 +11,20 @@ lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.telescope.defaults.layout_config.width = 0.80
-lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 175
-lvim.builtin.telescope.defaults.pickers.find_files.previewer = true
+lvim.builtin.telescope.pickers.buffers.initial_mode = "normal"
+-- lvim.builtin.telescope.pickers.buffers.theme = "dropdown"
+-- lvim.builtin.telescope.defaults.pickers.find_files.previewer = true
+-- lvim.builtin.telescope.defaults.initial_mode = "insert"
+-- lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
+-- lvim.builtin.telescope.defaults.layout_config.width = 0.90
+-- lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 90
+-- lvim.builtin.telescope.pickers.live_grep = {
+--   layout_strategy = "horizontal",
+--   layout_config = {
+--     width = 0.9,
+--     prompt_position = "top",
+--   },
+-- }
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.cmdline.enable = false
 lvim.builtin.cmp.window.documentation = false
@@ -34,6 +46,11 @@ lvim.builtin.cmp.formatting.source_names = {
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
+lvim.transparent_window = true
+lvim.builtin.nvimtree.setup.sync_root_with_cwd = false
+lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
+-- lvim.colorscheme = "tokyonight"
+
 vim.opt.showtabline = 0
 local options = {
   backup = false, -- creates a backup file
