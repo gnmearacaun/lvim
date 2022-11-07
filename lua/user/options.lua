@@ -1,7 +1,9 @@
 lvim.colorscheme = "ferrum"
+-- lvim.colorscheme = "tokyonight-moon"
 -- lvim.colorscheme = "darkplus"
 lvim.log.level = "warn"
 -- lvim.log.level = "debug"
+lvim.builtin.indentlines.options.enabled = true
 lvim.builtin.alpha.active = true
 lvim.builtin.illuminate.active = false
 lvim.builtin.bufferline.active = true
@@ -12,21 +14,19 @@ lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.telescope.pickers.buffers.initial_mode = "normal"
--- lvim.builtin.telescope.pickers.buffers.theme = "dropdown"
--- lvim.builtin.telescope.defaults.pickers.find_files.previewer = true
--- lvim.builtin.telescope.defaults.initial_mode = "insert"
+lvim.builtin.telescope.defaults.initial_mode = "insert"
 -- lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
 -- lvim.builtin.telescope.defaults.layout_config.width = 0.90
 -- lvim.builtin.telescope.defaults.layout_config.preview_cutoff = 90
--- lvim.builtin.telescope.pickers.live_grep = {
---   layout_strategy = "horizontal",
---   layout_config = {
---     width = 0.9,
---     prompt_position = "top",
---   },
--- }
+lvim.builtin.telescope.pickers.live_grep = {
+  layout_strategy = "horizontal",
+  layout_config = {
+    width = 0.95,
+  },
+}
 lvim.builtin.dap.active = true
 lvim.builtin.cmp.cmdline.enable = false
+<<<<<<< HEAD
 lvim.builtin.cmp.window.documentation = false
 lvim.builtin.cmp.window.completion = {
   border = "rounded",

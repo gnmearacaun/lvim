@@ -133,28 +133,28 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 
 require("telescope-tabs").setup({
-	show_preview = true,
-	close_tab_shortcut = "C-d",
-	initial_mode = "normal",
-	theme = "dropdown",
-	-- Your custom config :^)
-layout_config = {
-      prompt_position = 'top',
-      horizontal = {
-        mirror = true,
-        preview_cutoff = 1,
-        preview_width = 0.7,
-      },
-      vertical = {
-        mirror = true,
-        preview_cutoff = 0.6,
-      },
-      flex = {
-        flip_columns = 110,
-      },
-      height = 0.94,
-      width = 0.94,
-    },
+-- 	show_preview = true,
+-- 	close_tab_shortcut = "C-d",
+-- 	initial_mode = "normal",
+-- 	theme = "dropdown",
+-- 	-- Your custom config :^)
+-- layout_config = {
+--       prompt_position = 'top',
+--       horizontal = {
+--         mirror = true,
+--         preview_cutoff = 1,
+--         preview_width = 0.7,
+--       },
+--       vertical = {
+--         mirror = true,
+--         preview_cutoff = 0.6,
+--       },
+--       flex = {
+--         flip_columns = 110,
+--       },
+--       height = 0.94,
+--       width = 0.94,
+--     },
 })
 
 -- require("telescope-vimwiki").setup({
