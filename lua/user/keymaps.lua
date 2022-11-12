@@ -97,6 +97,7 @@ keymap("n", "te", "<cmd>StopScrolling<CR>", opts)
 -- Markdown Preview keybindings
 keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
 keymap("n", "tm", "<Plug>MarkdownPreviewToggle", opts)
+
 -- Consistent `*` behaviour
 keymap("n", "*", [[*N]], opts)
 keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)

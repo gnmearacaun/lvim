@@ -63,7 +63,6 @@ lvim.plugins = {
     "0x100101/lab.nvim",
     run = "cd js && npm ci",
   },
-<<<<<<< HEAD
   -- "MunifTanjim/nui.nvim",
   -- {
   --   "folke/noice.nvim",
@@ -72,84 +71,6 @@ lvim.plugins = {
   --     require("noice").setup()
   --   end,
   -- },
-  -- Packer
-    event = "VimEnter",
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VimEnter",
-  --   config = function()
-  --     require("noice").setup()
-  --   end,
-  --   requires = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --   },
-  -- },
-||||||| parent of 950684f (repairing sumneko loading + missing keymaps)
-  -- { "tzachar/cmp-tabnine", run = "./install.sh" },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   event = { "VimEnter" },
-  --   config = function()
-  --     vim.defer_fn(function()
-  --       require("copilot").setup {
-  --         plugin_manager_path = os.getenv "LUNARVIM_RUNTIME_DIR" .. "/site/pack/packer",
-  --       }
-  --     end, 100)
-  --   end,
-  -- },
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   after = { "copilot.lua" },
-  --   config = function()
-  --     require("copilot_cmp").setup()
-  --   end,
-  -- },
-  -- Packer
-  {
-    "folke/noice.nvim",
-    event = "VimEnter",
-    config = function()
-      require("noice").setup()
-    end,
-    requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    },
-  },
-
-=======
-  -- { "tzachar/cmp-tabnine", run = "./install.sh" },
-	-- {
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	-- event = { "VimEnter" },
-	-- 	config = function()
-	-- 		vim.defer_fn(function()
-	-- 			require("copilot").setup({
-	-- 				plugin_manager_path = os.getenv("LUNARVIM_RUNTIME_DIR") .. "/site/pack/packer",
-	-- 			})
-	-- 		end, 100)
-	-- 	end,
-	-- },
-	-- {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = { "copilot.lua" },
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup()
-	-- 	end,
-	-- },
-  -- Packer
-
-	"MunifTanjim/nui.nvim",
-	{
-		"folke/noice.nvim",
-		event = "VimEnter",
-		config = function()
-			require("noice").setup()
-		end,
-	},
-
->>>>>>> 950684f (repairing sumneko loading + missing keymaps)
   -- https://github.com/jose-elias-alvarez/typescript.nvim
   -- "rmagatti/auto-session",
   -- "rmagatti/session-lens"
@@ -157,6 +78,32 @@ lvim.plugins = {
   -- BOD
   "lunarvim/colorschemes",
   "gnmearacaun/onedarkcomment.nvim",
+  {
+    "ray-x/starry.nvim",
+    setup = function()
+  -- see example setup below
+-- lua require('starry.functions').change_style("dracula_blood")
+     vim.g.starry_italic_comments = true
+          -- starry_italic_comments = true
+          -- starry_italic_string = false
+          -- starry_italic_keywords = false
+          -- starry_italic_functions = false
+          -- starry_italic_variables = false
+          -- starry_contrast = true
+          -- starry_borders = false
+          -- starry_disable_background = false  "set to true to disable background and allow transparent background
+          -- starry_style_fix=v:true  "disable random loading
+          -- starry_style="moonlight"  "load moonlight everytime or
+          -- starry_darker_contrast=v:true  "darker background
+          -- starry_deep_black=false       "OLED deep black
+          -- starry_italic_keywords=false
+          -- starry_italic_functions=false
+          -- starry_set_hl=false " Note: enable for nvim 0.6+, it is faster (loading time down to 4~6s from 7~11s), but it does
+          -- " not overwrite old values and may has some side effects
+          -- starry_daylight_switch=false  "this allow using brighter color
+-- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
+    end,
+  },
   "vim-scripts/autoscroll.vim",
   "vimwiki/vimwiki",
   "ElPiloto/telescope-vimwiki.nvim",
