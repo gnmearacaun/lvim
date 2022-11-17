@@ -55,6 +55,14 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	end,
 })
 
+-- experiment
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- 	pattern = { "lvim.builtin.dashboard.active = true" },
+-- 	callback = function()
+-- 		vim.cmd("2j")
+-- 	end,
+-- })
+
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 -- 	pattern = { "" },
 -- 	callback = function()
@@ -78,13 +86,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 	end,
 })
 
--- vim.api.nvim_create_autocmd({ "FileType" }, {
--- 	pattern = { "gitcommit", "markdown" },
--- 	callback = function()
--- 		vim.opt_local.wrap = true
--- 		vim.opt_local.spell = true
--- 	end,
--- })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "gitcommit", "markdown" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
 
 -- vim.api.nvim_create_autocmd({ "FileType" }, {
 -- 	pattern = { "NeogitCommitMessage" },

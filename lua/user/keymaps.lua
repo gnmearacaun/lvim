@@ -9,21 +9,6 @@ local keymap = vim.keymap.set
 -- keymap("i", "<A-h>", "<Left>", opts)
 -- keymap("i", "<A-l>", "<Right>", opts)
 -- Normal --
--- Better window navigation
-keymap("n", "<m-h>", "<C-w>h", opts)
-keymap("n", "<m-j>", "<C-w>j", opts)
-keymap("n", "<m-k>", "<C-w>k", opts)
-keymap("n", "<m-l>", "<C-w>l", opts)
-keymap("n", "<m-tab>", "<c-6>", opts)
-
-function _G.set_terminal_keymaps()
-  vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
-  vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
-end
-
-vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
 -- Tabs --
 -- keymap("n", "\\", ":tabnew %<cr>", opts)
@@ -60,7 +45,7 @@ lvim.keys.normal_mode["tk"] = "<cmd>Bdelete!<CR>"
 -- keymap("n", "tl", ":BufferLineCycleNext<CR>", opts)
 -- keymap("n", "tk", "<cmd>Bdelete!<CR>", opts)
 -- " Toggle between last 2 buffers
-keymap("n", "tt", "<C-^>", opts)
+-- keymap("n", "tt", "<C-^>", opts)
 keymap("n", "tq", ":tabonly<cr>", opts)
 
 --keymap("n", "<C-w>", "<cmd>Bdelete!<CR>", opts)
@@ -97,7 +82,8 @@ keymap("n", "te", "<cmd>StopScrolling<CR>", opts)
 -- Markdown Preview keybindings
 keymap("n", "ms", "<cmd>MarkdownPreview<CR>", opts)
 keymap("n", "tm", "<Plug>MarkdownPreviewToggle", opts)
-
+lvim.keys.normal_mode["<M-{>"] = ":bp<cr>"
+lvim.keys.normal_mode["<M-}>"] = ":bn<cr>"
 -- Consistent `*` behaviour
 keymap("n", "*", [[*N]], opts)
 keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
@@ -168,7 +154,6 @@ function _G.set_terminal_keymaps()
   vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
 end
 
-
 -- Normal --
 vim.cmd "autocmd! TermOpen term://* lua set_terminal_keymaps()"
 
@@ -211,9 +196,9 @@ keymap("n", "<F7>", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 keymap("n", "<C-z>", "<cmd>ZenMode<cr>", opts)
 keymap("n", "-", ":lua require'lir.float'.toggle()<cr>", opts)
 keymap("n", "gx", [[:silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<CR>]], opts)
-keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
+-- keymap("n", "<m-v>", "<cmd>lua require('lsp_lines').toggle()<cr>", opts)
 
-keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
+-- keymap("n", "<m-/>", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>', opts)
 
 vim.api.nvim_set_keymap(
@@ -229,6 +214,7 @@ vim.api.nvim_set_keymap(
   opts
 )
 
+-- is this used anywhere?
 vim.cmd [[
   function! QuickFixToggle()
     if empty(filter(getwininfo(), 'v:val.quickfix'))

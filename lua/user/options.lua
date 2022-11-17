@@ -3,15 +3,20 @@ lvim.log.level = "warn" -- warn or debug
 lvim.format_on_save.enabled = false
 lvim.builtin.indentlines.options.enabled = true
 lvim.builtin.alpha.active = true
+lvim.builtin.cmp.completion.autocomplete = false --for c-space to work for completion
 lvim.builtin.illuminate.active = false
 lvim.builtin.bufferline.active = true
 lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
+lvim.builtin.terminal.open_mapping = [[<c-t>]]
+lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.lir.show_hidden_files = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
--- lvim.builtin.telescope.defaults.initial_mode = "insert"
+vim.opt.fixeol = false --not to add a newline at end of file on save. True is the default in vim
+lvim.builtin.telescope.defaults.initial_mode = "normal"
 lvim.builtin.telescope.pickers = {
   find_files = {
     layout_config = {
@@ -68,7 +73,7 @@ local options = {
   splitright = true, -- force all vertical splits to go to the right of current window
   swapfile = false, -- creates a swapfile
   termguicolors = true, -- set term gui colors (most terminals support this)
-  timeoutlen = 1000, -- time to wait for a mapped sequence to complete (in milliseconds)
+  timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true, -- enable persistent undo
   -- undodir = get_cache_dir() .. "/undo" -- set an undo directory
   updatetime = 300, -- faster completion (4000ms default)
@@ -81,12 +86,13 @@ local options = {
   laststatus = 3,
   showcmd = false,
   ruler = false,
-  relativenumber = true, -- set relative numbered lines
+  relativenumber = false, -- set relative numbered lines
   numberwidth = 4, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = true,                            -- wrap long lines
-  linebreak = true,                            -- break lines, not words
-  scrolloff = 3,
+  wrap = true,                   -- wrap long lines
+  linebreak = true,              -- break lines, not words
+  whichwrap = "bs<>[]hl",        -- which "horizontal" keys are allowed to travel to prev/next line
+  scrolloff = 7,
   sidescrolloff = 8,
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   title = true,
@@ -111,20 +117,21 @@ vim.opt.fillchars:append {
 	--   diff		'-'		deleted lines of the 'diff' option
 }
 
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.opt.iskeyword:append "-" -- used in searching and recognizing with many commands
-vim.opt.whichwrap:append "<,>,[,],h,l" -- let movement keys reach the previous line
-vim.opt.shortmess:append "c" -- don't show the dumb matching stuff
--- To stop inserting the current comment leader automatically 
-vim.opt.formatoptions:remove("c")	--	Auto-wrapping comments using 'textwidth' 
-vim.opt.formatoptions:remove("r")	--	Hitting <Enter> in Insert mode.
-vim.opt.formatoptions:remove("o")	--	Hitting 'o' or 'O' in Normal mode.  
+-- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
+vim.opt.iskeyword:append "-"                           -- hyphenated words recognized by searches
+vim.opt.shortmess:append "c"                           -- don't give |ins-completion-menu| messages
+vim.opt.formatoptions:remove({ "c", "r", "o" })        -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
+
 vim.filetype.add {  --to get better highlighting for .conf files
   extension = {
     conf = "dosini",
   },
 }
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+
+vim.api.nvim_clear_autocmds { pattern = { "gitcommit", "markdown" }, group = "_filetype_settings" } -- so that random words aren't underlined in markdown

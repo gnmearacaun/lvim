@@ -14,7 +14,7 @@ lvim.plugins = {
   "NvChad/nvim-colorizer.lua",
   "ghillb/cybu.nvim",
   "moll/vim-bbye",
-  "folke/todo-comments.nvim",
+  -- "folke/todo-comments.nvim",
   "windwp/nvim-spectre",
   "f-person/git-blame.nvim",
   "ruifm/gitlinker.nvim",
@@ -118,6 +118,13 @@ lvim.plugins = {
     config = function()
       require("leap").add_default_mappings()
     end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup()
+    end
   },
   -- end BOD
 }
