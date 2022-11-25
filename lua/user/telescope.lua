@@ -157,6 +157,28 @@ require("telescope-tabs").setup({
 --     },
 })
 
+
 -- require("telescope-vimwiki").setup({
 --   load_extension = "vw",
 -- })
+
+-- lvim.builtin.telescope.defaults.layout_strategy = "flex"
+-- lvim.builtin.telescope.defaults.layout_config = {
+--   height = 0.95,
+--   width = 0.95,
+--   horizontal = {
+--     preview_cutoff = 120,
+--     preview_width = 0.6,
+--   },
+--   vertical = {
+--     preview_cutoff = 40,
+--   },
+--   flex = {
+--     flip_columns = 150,
+--   },
+-- }
+
+for key, _ in pairs(lvim.builtin.telescope.pickers) do
+  lvim.builtin.telescope.pickers[key].previewer = nil
+  lvim.builtin.telescope.pickers[key].theme = nil
+end

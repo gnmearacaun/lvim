@@ -178,3 +178,26 @@ vim.api.nvim_create_autocmd({ "CursorHold" }, {
 --     vim.lsp.buf.format { async = true }
 --   end,
 -- })
+
+-- The new format for autocmds 221120
+
+-- vim.api.nvim_create_augroup("lvim_user", {}) -- this is so that when lvim reloads the config, autocmds won't be duplicated
+-- lvim.autocommands = {
+--   {
+--     { "BufWinEnter", "BufRead", "BufNewFile" },
+--     {
+--       group = "lvim_user",
+--       pattern = "*",
+--       command = "setlocal formatoptions-=c formatoptions-=r formatoptions-=o",
+--     },
+--   },
+--   {
+--     { "BufEnter", "BufWinEnter" },
+--     {
+--       group = "lvim_user",
+--       pattern = "*.lua",
+--       command = "setlocal ts=2 sw=2",
+--     },
+--   },
+-- }
+

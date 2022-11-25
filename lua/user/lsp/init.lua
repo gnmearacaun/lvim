@@ -2,6 +2,7 @@ require("user.lsp.languages.rust")
 require("user.lsp.languages.go")
 require("user.lsp.languages.python")
 require("user.lsp.languages.js-ts")
+-- require("user.lsp.languages.latex")
 
 lvim.format_on_save = false
 lvim.lsp.diagnostics.virtual_text = false

@@ -25,3 +25,4 @@ reload "user.colorizer"
 reload "user.lualine"
 reload "user.icons"
 reload "user.vimwiki"
+

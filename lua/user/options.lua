@@ -3,7 +3,7 @@ lvim.log.level = "warn" -- warn or debug
 lvim.format_on_save.enabled = false
 lvim.builtin.indentlines.options.enabled = true
 lvim.builtin.alpha.active = true
-lvim.builtin.cmp.completion.autocomplete = false --for c-space to work for completion
+-- lvim.builtin.cmp.completion.autocomplete = false --for c-space to work for completion
 lvim.builtin.illuminate.active = false
 lvim.builtin.bufferline.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -11,12 +11,11 @@ lvim.builtin.terminal.active = true
 lvim.builtin.terminal.open_mapping = [[<c-t>]]
 lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+-- lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.builtin.lir.show_hidden_files = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
-vim.opt.fixeol = false --not to add a newline at end of file on save. True is the default in vim
-lvim.builtin.telescope.defaults.initial_mode = "normal"
+lvim.builtin.telescope.defaults.initial_mode = "insert"
 lvim.builtin.telescope.pickers = {
   find_files = {
     layout_config = {
@@ -30,12 +29,13 @@ lvim.builtin.telescope.pickers = {
   },
 }
 lvim.builtin.dap.active = true
-lvim.builtin.cmp.cmdline.enable = false
-lvim.builtin.cmp.window.documentation = false
-lvim.builtin.cmp.window.completion = {
-  border = "rounded",
-  winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-}
+-- lvim.builtin.cmp.cmdline.enable = false
+-- lvim.builtin.cmp.window.documentation = false
+-- lvim.builtin.cmp.window.completion = {
+--   border = "rounded",
+--   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
+-- }
+
 lvim.builtin.cmp.formatting.source_names = {
   nvim_lsp = "",
   emoji = "",
@@ -53,6 +53,14 @@ lvim.builtin.cmp.formatting.source_names = {
 lvim.transparent_window = true
 lvim.builtin.nvimtree.setup.sync_root_with_cwd = false
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
+lvim.builtin.project.manual_mode = true -- to set the directory for searching with project.nvim
+lvim.lsp.diagnostics.float.focusable = true -- focus a popup by pressing gl twice
+
+vim.opt.fixeol = false --not to add a newline at end of file on save. True is the default in vim
+-- folding
+vim.opt.foldmethod = "expr" --can use za to toggle folds
+vim.opt.foldexpr   = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99 -- you probably want that as well
 
 local options = {
   backup = false, -- creates a backup file
@@ -121,6 +129,8 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.opt.listchars = "nbsp:␣,space:·,trail:·"
+vim.opt.list = true
 vim.opt.writebackup = false -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 -- vim.opt.shortmess = "ilmnrx"                        -- flags to shorten vim messages, see :help 'shortmess'
 vim.opt.iskeyword:append "-"                           -- hyphenated words recognized by searches

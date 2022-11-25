@@ -93,6 +93,12 @@ keymap("v", "*", [[y/\V<c-r>=escape(@",'/\')<cr><cr>N]], opts)
 -- Other keymappings
 lvim.keys.normal_mode["s"] = false
 lvim.keys.normal_mode["ss"] = false
+
+lvim.keys.normal_mode["O"] = "O <Esc>"
+-- for indentation to be respected 
+lvim.keys.normal_mode["o"] = "o <BS><Esc>"
+lvim.keys.normal_mode.d = [["_d]]
+
 vim.cmd([[
 nnoremap <F5> "=strftime("%c")<CR>P
 inoremap <F5> <C-R>=strftime("%c")<CR>
