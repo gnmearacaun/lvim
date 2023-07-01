@@ -4,7 +4,7 @@
 
 Open `nvim` and enter the following:
 
-```
+```bash
 :checkhealth
 ```
 

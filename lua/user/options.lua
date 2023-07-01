@@ -1,3 +1,4 @@
+-- lvim.colorscheme = "gruvbox"
 lvim.colorscheme = "gruvbox"
 lvim.log.level = "warn" -- warn or debug
 lvim.format_on_save.enabled = false
@@ -12,6 +13,7 @@ lvim.builtin.terminal.open_mapping = [[<c-t>]]
 lvim.builtin.terminal.direction = "horizontal"
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.reload_config_on_save = true
 lvim.builtin.lir.show_hidden_files = false
 lvim.builtin.breadcrumbs.active = true
 lvim.builtin.treesitter.highlight.enabled = true
@@ -53,8 +55,9 @@ lvim.builtin.cmp.formatting.source_names = {
 lvim.transparent_window = true
 lvim.builtin.nvimtree.setup.sync_root_with_cwd = false
 lvim.builtin.nvimtree.setup.actions.open_file.quit_on_open = true
+lvim.builtin.nvimtree.setup.actions.open_file.resize_window = true
 lvim.builtin.project.manual_mode = true -- to set the directory for searching with project.nvim
-lvim.lsp.diagnostics.float.focusable = true -- focus a popup by pressing gl twice
+-- lvim.lsp.diagnostics.float.focusable = true -- focus a popup by pressing gl twice
 
 vim.opt.fixeol = false --not to add a newline at end of file on save. True is the default in vim
 -- folding
@@ -89,7 +92,7 @@ local options = {
   expandtab = true, -- convert tabs to spaces
   shiftwidth = 2, -- the number of spaces inserted for each indentation
   tabstop = 2, -- insert 2 spaces for a tab
-  cursorline = true, -- highlight the current line
+  cursorline = false, -- highlight the current line
   number = true, -- set numbered lines
   laststatus = 3,
   showcmd = false,
