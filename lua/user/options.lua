@@ -1,21 +1,30 @@
+lvim.builtin.alpha.dashboard.section.header.val = {
+  "    __                          _    ___         ",
+  "   / /   __  ______  ____ _____| |  / (_)___ ___ ",
+  "  / /   / / / / __ \\/ __ `/ ___/ | / / / __ `__ \\",
+  " / /___/ /_/ / / / / /_/ / /   | |/ / / / / / / /",
+  "/_____/\\__,_/_/ /_/\\__,_/_/    |___/_/_/ /_/ /_/ ",
+}
+
 -- lvim.colorscheme = "gruvbox"
-lvim.colorscheme = "gruvbox"
-lvim.log.level = "warn" -- warn or debug
-lvim.format_on_save.enabled = false
-lvim.builtin.indentlines.options.enabled = true
+-- lvim.colorscheme = "onedark"
+-- lvim.colorscheme = "darkplus"
+lvim.colorscheme = "primer_dark"
+lvim.log.level = "warn"
 lvim.builtin.alpha.active = true
--- lvim.builtin.cmp.completion.autocomplete = false --for c-space to work for completion
 lvim.builtin.illuminate.active = false
-lvim.builtin.bufferline.active = true
-lvim.builtin.alpha.mode = "dashboard"
-lvim.builtin.terminal.active = true
-lvim.builtin.terminal.open_mapping = [[<c-t>]]
-lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.bufferline.active = false
+lvim.builtin.terminal.persist_mode = false
 lvim.builtin.nvimtree.setup.view.side = "left"
 -- lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
 lvim.reload_config_on_save = true
 lvim.builtin.lir.show_hidden_files = false
 lvim.builtin.breadcrumbs.active = true
+-- bod 
+vim.api.nvim_clear_autocmds { pattern = { "gitcommit", "markdown" }, group = "_filetype_settings" } -- so that random words aren't underlined in markdown
+lvim.format_on_save.enabled = false
+lvim.builtin.indentlines.options.enabled = true
+-- lvim.builtin.cmp.completion.autocomplete = false --for c-space to work for completion
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.telescope.defaults.initial_mode = "insert"
 lvim.builtin.telescope.pickers = {
@@ -30,7 +39,6 @@ lvim.builtin.telescope.pickers = {
     },
   },
 }
-lvim.builtin.dap.active = true
 -- lvim.builtin.cmp.cmdline.enable = false
 -- lvim.builtin.cmp.window.documentation = false
 -- lvim.builtin.cmp.window.completion = {
@@ -49,6 +57,13 @@ lvim.builtin.cmp.formatting.source_names = {
   tmux = "",
   treesitter = "",
 }
+lvim.builtin.dap.active = true
+lvim.keys.term_mode = { ["<C-l>"] = false }
+
+
+-- lvim.builtin.cmp.formatting = {
+--     format = require("tailwindcss-colorizer-cmp").formatter
+-- }
 -- vim.g.netrw_browse_split = 0
 -- vim.g.netrw_banner = 0
 -- vim.g.netrw_winsize = 25
@@ -107,6 +122,7 @@ local options = {
   sidescrolloff = 8,
   guifont = "monospace:h17", -- the font used in graphical neovim applications
   title = true,
+  titleold = vim.split(os.getenv("SHELL") or "", "/")[3] ,
   -- colorcolumn = "80",
   -- colorcolumn = "120",
 }
@@ -145,6 +161,3 @@ vim.filetype.add {  --to get better highlighting for .conf files
     conf = "dosini",
   },
 }
-
-
-vim.api.nvim_clear_autocmds { pattern = { "gitcommit", "markdown" }, group = "_filetype_settings" } -- so that random words aren't underlined in markdown

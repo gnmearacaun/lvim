@@ -150,6 +150,11 @@ keymap("n", "<M-k>", "<C-w>k", opts)
 keymap("n", "<M-l>", "<C-w>l", opts)
 keymap("n", "<M-tab>", "<C-6>", opts)
 
+keymap("n", "<Down>", "<cmd>BookmarkNext<cr>", opts)
+keymap("n", "<Up>", "<cmd>BookmarkPrev<cr>", opts)
+keymap("n", "<Right>", "<cmd>FilemarkNext<cr>", opts)
+keymap("n", "<Left>", "<cmd>FilemarkPrev<cr>", opts)
+
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
   -- vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
@@ -175,6 +180,10 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+keymap("n", "<c-j>", "<c-d>", opts)
+keymap("n", "<c-k>", "<c-u>", opts)
+keymap("n", "<c-m>", "<s-m>", opts)
+
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)
@@ -187,7 +196,8 @@ keymap("n", "g#", "g#zz", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
-keymap("v", "p", '"_dP', opts)
+keymap("x", "p", [["_dP]])
+-- keymap("v", "p", '"_dp', opts)
 -- keymap("v", "P", '"_dP', opts)
 
 -- keymap("n", "q", "<cmd>Bdelete!<CR>", opts)
@@ -210,7 +220,7 @@ keymap("x", "<m-/>", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vi
 vim.api.nvim_set_keymap(
   "n",
   "<tab>",
-  "<cmd>lua require('telescope').extensions.harpoon.marks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Harpoon'})<cr>",
+  "<cmd>lua require('telescope').extensions.bookmark.filemarks(require('telescope.themes').get_dropdown{previewer = false, initial_mode='normal', prompt_title='Filemarks'})<cr>",
   opts
 )
 vim.api.nvim_set_keymap(
