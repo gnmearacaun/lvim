@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 lvim.builtin.which_key.mappings[" "] = { "<cmd>Telescope buffers<cr>", "Buffers" }
-||||||| cb30d08
-lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
-=======
 lvim.builtin.which_key.setup.plugins.presets["operators"] = false
 lvim.builtin.which_key.setup.ignore_missing = true
 
 lvim.builtin.which_key.mappings["b"] = { "<cmd>Telescope buffers<cr>", "Buffers" }
->>>>>>> upstream/master
 lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<cr>", "vsplit" }
 lvim.builtin.which_key.mappings["h"] = { "<cmd>nohlsearch<cr>", "nohl" }
 lvim.builtin.which_key.mappings["o"] = { "<cmd>AerialToggle!<cr>", "Outline" }
@@ -166,19 +161,10 @@ lvim.builtin.which_key.mappings["n"] = {
   t = { "<cmd>Telekasten toggle_todo<cr>", "Toggle Todo" },
 }
 
-<<<<<<< HEAD
--- lvim.builtin.which_key.mappings["s"] = nil
-||||||| cb30d08
-lvim.builtin.which_key.mappings[";"] = nil
-lvim.builtin.which_key.mappings["c"] = nil
-lvim.builtin.which_key.mappings["L"] = nil
-lvim.builtin.which_key.mappings["s"] = nil
-=======
 lvim.builtin.which_key.mappings[";"] = nil
 -- lvim.builtin.which_key.mappings["c"] = nil
 lvim.builtin.which_key.mappings["L"] = nil
 lvim.builtin.which_key.mappings["s"] = nil
->>>>>>> upstream/master
 lvim.builtin.which_key.mappings["w"] = nil
 
 local m_opts = {

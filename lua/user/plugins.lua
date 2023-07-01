@@ -130,54 +130,54 @@ lvim.plugins = {
   -- BOD
   "lunarvim/colorschemes",
   "gnmearacaun/onedarkcomment.nvim",
-  {
-    "ray-x/starry.nvim",
-    setup = function()
-  -- see example setup below
--- lua require('starry.functions').change_style("dracula_blood")
-     vim.g.starry_italic_comments = true
-          -- starry_italic_comments = true
-          -- starry_italic_string = false
-          -- starry_italic_keywords = false
-          -- starry_italic_functions = false
-          -- starry_italic_variables = false
-          -- starry_contrast = true
-          -- starry_borders = false
-          -- starry_disable_background = false  "set to true to disable background and allow transparent background
-          -- starry_style_fix=v:true  "disable random loading
-          -- starry_style="moonlight"  "load moonlight everytime or
-          -- starry_darker_contrast=v:true  "darker background
-          -- starry_deep_black=false       "OLED deep black
-          -- starry_italic_keywords=false
-          -- starry_italic_functions=false
-          -- starry_set_hl=false " Note: enable for nvim 0.6+, it is faster (loading time down to 4~6s from 7~11s), but it does
-          -- " not overwrite old values and may has some side effects
-          -- starry_daylight_switch=false  "this allow using brighter color
--- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
-    end,
-  },
+--   {
+--     "ray-x/starry.nvim",
+--     setup = function()
+--   -- see example setup below
+-- -- lua require('starry.functions').change_style("dracula_blood")
+--      vim.g.starry_italic_comments = true
+--           -- starry_italic_comments = true
+--           -- starry_italic_string = false
+--           -- starry_italic_keywords = false
+--           -- starry_italic_functions = false
+--           -- starry_italic_variables = false
+--           -- starry_contrast = true
+--           -- starry_borders = false
+--           -- starry_disable_background = false  "set to true to disable background and allow transparent background
+--           -- starry_style_fix=v:true  "disable random loading
+--           -- starry_style="moonlight"  "load moonlight everytime or
+--           -- starry_darker_contrast=v:true  "darker background
+--           -- starry_deep_black=false       "OLED deep black
+--           -- starry_italic_keywords=false
+--           -- starry_italic_functions=false
+--           -- starry_set_hl=false " Note: enable for nvim 0.6+, it is faster (loading time down to 4~6s from 7~11s), but it does
+--           -- " not overwrite old values and may has some side effects
+--           -- starry_daylight_switch=false  "this allow using brighter color
+-- -- " other themes: dracula, oceanic, dracula_blood, 'deep ocean', darker, palenight, monokai, mariana, emerald, middlenight_blue
+--     end,
+--   },
   "vim-scripts/autoscroll.vim",
   "vimwiki/vimwiki",
   "ElPiloto/telescope-vimwiki.nvim",
-  {
-    "iamcco/markdown-preview.nvim",
-    run = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   run = function()
+  --     vim.fn["mkdp#util#install"]()
+  --   end,
+  -- },
   {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
     end,
   },
-  {
-    "folke/todo-comments.nvim",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("todo-comments").setup()
-    end
-  },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   requires = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("todo-comments").setup()
+  --   end
+  -- },
   "hrsh7th/cmp-emoji",
   -- end BOD
 }
