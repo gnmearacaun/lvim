@@ -22,7 +22,7 @@ lvim.builtin.lir.show_hidden_files = false
 lvim.builtin.breadcrumbs.active = true
 -- bod 
 lvim.builtin.cursorline = true
--- vim.o.cursorline = true
+vim.o.cursorline = true
 vim.api.nvim_clear_autocmds { pattern = { "gitcommit", "markdown" }, group = "_filetype_settings" } -- so that random words aren't underlined in markdown
 lvim.format_on_save.enabled = false
 lvim.builtin.indentlines.options.enabled = true
